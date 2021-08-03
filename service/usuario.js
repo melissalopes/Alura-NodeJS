@@ -3,19 +3,16 @@ class Usuario {
     obterDados = (response) => {
         try{
             return new Promise( resolve => {
-                const dados = response.data
-                const lista = [dados]
+                const result = response.data
 
-                const conteudo = lista.map( result => {
-                    return {
+                const conteudo = {
                         name: result.name,
                         login: result.login,
                         id: result.id,
                         url: result.html_url,
                         qtd_repos_public: result.public_repos,
                         repos_url: result.repos_url
-                    }
-                })    
+                }  
 
                 resolve(conteudo)
             })
