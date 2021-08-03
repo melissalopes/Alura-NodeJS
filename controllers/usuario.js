@@ -3,16 +3,16 @@ const url = `https://api.github.com/users/melissalopes`
 const uploadArquivo = require('../arquivo/uploadArquivo')
 const usuario = require('../service/usuario')
 
-/* 
-
-axios.get(url).then( response => {
+async function executar(){
     
-    async function recuperaDados() {
-        const conteudo = await usuario.obterDados(response)
-        uploadArquivo(JSON.stringify(conteudo), 'Usuario')
-    }
-    recuperaDados()
+    await axios.get(url).then( response => {
+        async function recuperaDados() {
+            const conteudo = await usuario.obterDados(response)
+            uploadArquivo(JSON.stringify(conteudo), 'usuario')
+        }
+        recuperaDados()
+    
+    }).catch(err => console.log(err))
+}
 
-}).catch(err => console.log(err))
- 
-*/
+executar()
